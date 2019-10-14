@@ -1,0 +1,75 @@
+﻿@model IEnumerable<Inmobiliaria_.Net_Core.Models.Inmueble>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Inmuebles</h3>
+
+<p>
+    <a class="btn btn-outline-light" style="background-color: #FF8300" asp-action="Create">AGREGAR NUEVO</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                PROPIETARIO
+            </th>
+            <th>
+                DIRECCION
+            </th>
+            <th>
+                CANT. AMBIENTES
+            </th>
+            <th>
+                TIPO
+            </th>
+            <th>
+                USO
+            </th>
+            <th>
+                PRECIO ALQUILER
+            </th>
+            <th>
+                DISPONIBLE
+            </th>
+            <th>
+                ACCIONES
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Propietario.Apellido)
+                    @Html.DisplayFor(modelItem => item.Propietario.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ambientes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Uso)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Precio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Disponible)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdInmueble" title="Editar"><span class="lnr lnr-pencil"></span></a>&nbsp;
+                    <a asp-action="Delete" asp-route-id="@item.IdInmueble" title="Eliminar"><span class="lnr lnr-cross"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

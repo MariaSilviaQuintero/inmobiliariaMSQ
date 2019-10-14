@@ -1,0 +1,60 @@
+﻿@model Inmobiliaria_.Net_Core.Models.Alquiler
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h4>Nuevo Alquiler</h4>
+<hr />
+<div class="row">
+    <div class="col-lg-6">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdInmueble" class="control-label">Seleccione Inmueble</label>
+                <select asp-for="IdInmueble" class="form-control">
+                    @foreach (Inmueble item in (IList<Inmueble>)ViewBag.inmueble)
+                    { 
+                        <option value=@item.IdInmueble>Propietario: @item.Propietario.Apellido @item.Propietario.Nombre, Direccion: @item.Direccion</option>
+                    }
+                </select>
+                <span asp-validation-for="IdInmueble" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Inquilino" class="control-label">Seleccione Inquilino</label>
+                <select asp-for="IdInquilino" class="form-control">
+                    @foreach (Inquilino item in (IList<Inquilino>)ViewBag.inquilino)
+                    {
+                        <option value=@item.IdInquilino>@item.Apellido @item.Nombre</option>
+                    }
+                </select>
+                <span asp-validation-for="IdInquilino" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaInicio" class="control-label"></label>
+                <input asp-for="FechaInicio" type="date" class="form-control" />
+                <span asp-validation-for="FechaInicio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="FechaFin" class="control-label"></label>
+                <input asp-for="FechaFin" type="date" class="form-control" />
+                <span asp-validation-for="FechaFin" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Importe" class="control-label"></label>
+                <input asp-for="Importe" class="form-control" />
+                <span asp-validation-for="Importe" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Agregar" class="btn btn-outline-light" style="background-color: #FF8300" />
+                <a class="btn btn-outline-light" style="background-color: #FF8300" asp-action="Index">Volver al listado</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
+
+

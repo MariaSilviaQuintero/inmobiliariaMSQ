@@ -1,0 +1,76 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/main.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+    <title>@ViewBag.Title</title>
+</head>
+<body onload="init()">
+    <header>
+        <nav class="site-header sticky-top py-1">
+            <div class="container d-flex flex-column flex-md-row justify-content-between">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a class="py-2 d-none d-md-inline-block " asp-controller="Home" asp-action="Logout">Cerrar Sesión @User.Identity.Name</a>
+                }
+                else
+                {
+                    <a class="py-2 d-none d-md-inline-block" href="@Url.Link("login",null)"><span class="lnr lnr-user"></span> Iniciar Sesión</a>
+                }
+                <a class="py-2 d-none d-md-inline-block" asp-controller="Propietarios" asp-action="Index"><span class="lnr lnr-user"></span> Propietarios</a>
+                <a class="py-2 d-none d-md-inline-block" asp-controller="Inquilinos" asp-action="Index"><span class="lnr lnr-user"></span> Inquilinos</a>
+                <a class="py-2 d-none d-md-inline-block" asp-controller="Inmuebles" asp-action="Index"><span class="lnr lnr-apartment"></span> Inmuebles</a>
+                <a class="py-2 d-none d-md-inline-block" asp-controller="Alquileres" asp-action="Index"><span class="lnr lnr-enter"></span> Alquileres</a>
+            </div>
+        </nav>
+    </header>
+    <main role="main">
+        <div class="container mt-3">
+            @if (ViewBag.Id != null)
+            {//alta exitosa
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <strong>¡Exito!</strong> @ViewBag.Id
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><span class="lnr lnr-cross-circle"></span></span>
+                    </button>
+                </div>
+            }
+            else if (ViewBag.Mensaje != null)
+            {//alta exitosa
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <strong>¡Error!</strong> @ViewBag.Mensaje
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true"><span class="lnr lnr-cross-circle"></span></span>
+                    </button>
+                </div>
+            }
+            else if (!String.IsNullOrWhiteSpace(ViewBag.Error))
+            {//ocurrió un error
+                <environment names="Development">
+                    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>¡Error!</strong> @ViewBag.Error
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true"><span class="lnr lnr-cross-circle"></span></span>
+                        </button>
+                    </div>
+                </environment>
+            }
+        </div>
+     
+        <div class="p-3">
+            @RenderBody()
+        </div>
+    </main>
+    @RenderSection("Scripts", false)
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+
+    <script type="text/javascript">
+        function init() {
+            $('.alert').alert();
+        }
+    </script>
+</body>
+</html>

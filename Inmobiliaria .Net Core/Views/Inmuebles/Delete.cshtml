@@ -1,0 +1,55 @@
+﻿@model Inmobiliaria_.Net_Core.Models.Inmueble
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4>Inmueble</h4>
+
+<h6>¿Seguro que desea eliminar el inmueble?</h6>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            DIRECCION:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+        <dt class="col-sm-2">
+            AMBIENTES:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Ambientes)
+        </dd>
+        <dt class="col-sm-2">
+            TIPO:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Tipo)
+        </dd>
+        <dt class="col-sm-2">
+            USO:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Uso)
+        </dd>
+        <dt class="col-sm-2">
+            PRECIO:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Precio)
+        </dd>
+        <dt class="col-sm-2">
+            DISPONIBLE:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Disponible)
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <input type="submit" value="Eliminar" class="btn btn-outline-light" style="background-color: #FF8300" />
+        <a class="btn btn-outline-light" style="background-color: #FF8300" asp-action="Index">Volver al listado</a>
+    </form>
+</div>
+

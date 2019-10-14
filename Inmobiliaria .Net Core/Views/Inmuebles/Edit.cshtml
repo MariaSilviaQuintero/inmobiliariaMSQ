@@ -1,0 +1,67 @@
+﻿@model Inmobiliaria_.Net_Core.Models.Inmueble
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>Editar Inmueble</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Direccion" class="control-label"></label>
+                <input asp-for="Direccion" class="form-control" />
+                <span asp-validation-for="Direccion" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Ambientes" class="control-label"></label>
+                <input asp-for="Ambientes" class="form-control" min="1"/>
+                <span asp-validation-for="Ambientes" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Tipo" class="control-label"></label>
+                <select asp-for="Tipo" class="form-control">
+                    <option value="Casa">Casa</option>
+                    <option value="Departamento">Departamento</option>
+                    <option value="Monoambiente">Monoambiente</option>
+                    <option value="Campo">Campo</option>
+                    <option value="Deposito">Deposito</option>
+                    <option value="Oficina">Oficina</option>
+                </select>
+                <span asp-validation-for="Tipo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Uso" class="control-label"></label>
+                <select asp-for="Uso" class="form-control">
+                    <option value="Vivienda">Vivienda</option>
+                    <option value="Comercial">Comercial</option>
+                </select>
+                <span asp-validation-for="Uso" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Precio" class="control-label"></label>
+                <input asp-for="Precio" class="form-control" min="1"/>
+                <span asp-validation-for="Precio" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Disponible" class="control-label">Disponible: </label>
+                <div class="form-check form-check-inline">
+                    <input class="control-label" type="radio" name="Disponible" id="inlineRadio1" value="Si" checked>
+                    <label class="form-check-label" for="inlineRadio1">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="control-label" type="radio" name="Disponible" id="inlineRadio2" value="No">
+                    <label class="form-check-label" for="inlineRadio2">No</label>
+                </div>
+         
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Guardar" class="btn btn-outline-light" style="background-color: #FF8300" />
+                <a class="btn btn-outline-light" style="background-color: #FF8300" asp-action="Index">Cancelar</a>
+            </div>
+        </form>
+    </div>
+</div>

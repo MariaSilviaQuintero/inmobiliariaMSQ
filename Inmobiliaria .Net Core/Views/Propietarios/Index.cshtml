@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Inmobiliaria_.Net_Core.Models.Propietario>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Propietarios</h3>
+
+<p>
+    <a class="btn btn-outline-light" style="background-color: #FF8300" asp-action="Create">AGREGAR NUEVO</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                APELLIDO y NOMBRE
+            </th>
+            <th>
+                DNI
+            </th>
+            <th>
+                TELEFONO
+            </th>
+            <th>
+                EMAIL
+            </th>
+            <th>
+                ACCIONES
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Apellido) 
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Dni)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdPropietario" title="Editar"><span class="lnr lnr-pencil"></span></a>&nbsp;
+                    <a asp-action="Delete" asp-route-id="@item.IdPropietario" title="Eliminar"><span class="lnr lnr-cross"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

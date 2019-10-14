@@ -1,0 +1,37 @@
+﻿@model Inmobiliaria_.Net_Core.Models.Alquiler
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h4>Alquiler</h4>
+
+<h6>¿Seguro que desea eliminar el alquiler?</h6>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            IMPORTE:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Importe)
+        </dd>
+        <dt class="col-sm-2">
+            INICIO CONTRATO:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaInicio)
+        </dd>
+        <dt class="col-sm-2">
+            FIN CONTRATO:
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FechaFin)
+        </dd>    
+    </dl>
+    <form asp-action="Delete">
+        <input type="submit" value="Eliminar" class="btn btn-outline-light" style="background-color: #FF8300" />
+        <a class="btn btn-outline-light" style="background-color: #FF8300" asp-action="Index">Volver al listado</a>
+    </form>
+</div>
+

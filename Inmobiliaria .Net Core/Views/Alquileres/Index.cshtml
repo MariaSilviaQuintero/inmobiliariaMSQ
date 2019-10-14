@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Inmobiliaria_.Net_Core.Models.Alquiler>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3>Alquileres</h3>
+<br />
+
+<p>
+    <a class="btn btn-outline-light" style="background-color: #FF8300" asp-action="Create">AGREGAR NUEVO</a>
+    <a class="btn btn-outline-light" style="background-color: #FF8300" asp-controller="Pagos" asp-action="Index"><span class="lnr lnr-chevron-right"></span> Ir a Pagos</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                INQUILINO
+            </th>
+            <th>
+                INMUEBLE
+            </th>
+            <th>
+                IMPORTE
+            </th>
+            <th>
+                INICIO CONTRATO
+            </th>
+            <th>
+                FIN CONTRATO
+            </th>
+            <th>
+                ACCIONES
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inquilino.Apellido)
+                    @Html.DisplayFor(modelItem => item.Inquilino.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Inmueble.Direccion)
+                </td>
+                <td>
+                    $@Html.DisplayFor(modelItem => item.Importe)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaInicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaFin)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.IdAlquiler" title="Editar"><span class="lnr lnr-pencil"></span></a>&nbsp;
+                    <a asp-action="Delete" asp-route-id="@item.IdAlquiler" title="Eliminar"><span class="lnr lnr-cross"></span></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
